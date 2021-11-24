@@ -1,0 +1,14 @@
+<p>repuestos works!</p>
+<div class="flex justify-content-between">
+  <a routerLink="/auth/login">Back to login</a>
+
+  <button
+    pButton
+    pRipple
+    class="p-button-link"
+    label="logout"
+    (click)="logout()"
+  ></button>
+</div>
+
+<pre>{{ user | json }}</pre>

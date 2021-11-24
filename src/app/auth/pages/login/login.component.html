@@ -1,0 +1,75 @@
+<div
+  *ngIf="submitting"
+  class="
+    absolute
+    w-full
+    h-full
+    flex
+    align-items-center
+    justify-content-center
+    bg-black-alpha-30
+  "
+>
+  <p-progressSpinner></p-progressSpinner>
+</div>
+<div class="flex justify-content-center align-items-center h-full">
+  <form
+    autocomplete="off"
+    class="w-480"
+    [formGroup]="loginForm"
+    (ngSubmit)="login()"
+  >
+    <p-card header="Welcome back!">
+      <div class="field">
+        <label for="username">Username</label>
+        <input
+          id="username"
+          type="text"
+          class="w-full"
+          pInputText
+          formControlName="username"
+        />
+        <small *ngIf="isInvalid('username')" id="username-help" class="p-error">
+          <div *ngIf="username?.errors?.['required']">
+            Username is required.
+          </div>
+        </small>
+      </div>
+      <div class="field">
+        <label for="password">Password</label>
+        <p-password
+          inputId="password"
+          [feedback]="false"
+          styleClass="w-full"
+          inputStyleClass="w-full"
+          formControlName="password"
+        ></p-password>
+        <small *ngIf="isInvalid('password')" id="password-help" class="p-error">
+          <div *ngIf="password?.errors?.['required']">
+            Password is required.
+          </div>
+        </small>
+      </div>
+      <ng-template pTemplate="footer">
+        <button
+          pButton
+          pRipple
+          label="Log In"
+          class="w-full"
+          type="submit"
+          [disabled]="submitting"
+        ></button>
+        <p>
+          Need an account?
+          <button
+            pButton
+            type="button"
+            label="Register"
+            class="p-button-link p-0"
+            [routerLink]="registerPath"
+          ></button>
+        </p>
+      </ng-template>
+    </p-card>
+  </form>
+</div>
