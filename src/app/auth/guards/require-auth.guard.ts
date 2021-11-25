@@ -8,7 +8,7 @@ import {
   RouterStateSnapshot,
   UrlSegment,
 } from '@angular/router';
-import { Observable, of, tap } from 'rxjs';
+import { Observable, tap } from 'rxjs';
 import { LoginComponent } from '../pages/login/login.component';
 import { AuthService } from '../services/auth.service';
 
@@ -32,7 +32,6 @@ export class RequireAuthGuard implements CanActivate, CanLoad {
     );
   }
   canLoad(route: Route, segments: UrlSegment[]): Observable<boolean> {
-    // return of(true);
     return this.authService.validateAndRefreshToken().pipe(
       tap((valid) => {
         if (!valid) {

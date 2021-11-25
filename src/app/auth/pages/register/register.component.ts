@@ -6,7 +6,6 @@ import { GENERIC_ERROR_MESSAGE } from 'src/app/app.messages';
 import { RepuestosComponent } from 'src/app/dashboard/pages/repuestos/repuestos.component';
 import { ValidatorService } from 'src/app/shared/services/validator.service';
 import { RegisterUser } from '../../interfaces/register-user.interface';
-import { User } from '../../interfaces/user.interface';
 import { AuthService } from '../../services/auth.service';
 import { LoginComponent } from '../login/login.component';
 
