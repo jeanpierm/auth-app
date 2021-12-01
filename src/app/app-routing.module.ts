@@ -10,7 +10,7 @@ const routes: Routes = [
     canActivate: [LoginGuard],
   },
   {
-    path: 'dashboard',
+    path: 'admin',
     loadChildren: () =>
       import('./admin/admin.module').then((m) => m.AdminModule),
     canLoad: [RequireAuthGuard],
@@ -18,7 +18,7 @@ const routes: Routes = [
   },
   {
     path: '**',
-    redirectTo: 'dashboard',
+    redirectTo: 'admin',
   },
 ];
 
