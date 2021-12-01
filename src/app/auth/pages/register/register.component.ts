@@ -3,7 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { MessageService } from 'primeng/api';
 import { GENERIC_ERROR_MESSAGE } from 'src/app/app.messages';
-import { RepuestosComponent } from 'src/app/dashboard/pages/repuestos/repuestos.component';
+import { RepuestosComponent } from 'src/app/admin/pages/repuestos/repuestos.component';
 import { ValidatorService } from 'src/app/shared/services/validator.service';
 import { RegisterUser } from '../../interfaces/register-user.interface';
 import { AuthService } from '../../services/auth.service';
@@ -74,32 +74,45 @@ export class RegisterComponent {
     if (!this.registerForm.valid) {
       return;
     }
-    console.log(this.registerForm.value);
     const { name, email, username, password } = this.registerForm.value;
     const newUser: RegisterUser = { name, email, username, password };
-    this.authService.createUser(newUser).subscribe(({ username, password }) => {
-      this.authService.login(username, password).subscribe({
-        next: ({ displayName, message }) => {
-          this.router.navigateByUrl(RepuestosComponent.PATH);
-          this.messageService.add({
-            severity: 'success',
-            summary: `Welcome ${displayName}`,
-            detail: message,
-          });
-        },
-        error: (err) => {
-          const { error } = err;
-          this.messageService.add({
-            severity: 'error',
-            summary: 'Error',
-            detail: error.message || GENERIC_ERROR_MESSAGE,
-          });
-          this.submitting = false;
-        },
-        complete: () => {
-          this.submitting = false;
-        },
-      });
+    this.authService.createUser(newUser).subscribe({
+      next: (_) => {
+        this.authService.login(newUser.username, newUser.password).subscribe({
+          next: ({ displayName, message }) => {
+            this.router.navigateByUrl(RepuestosComponent.PATH);
+            this.messageService.add({
+              severity: 'success',
+              summary: `Welcome ${displayName}`,
+              detail: message,
+            });
+          },
+          error: (err) => {
+            console.error('Error on login new user', err);
+            const { error } = err;
+            if (!error) return;
+            this.messageService.add({
+              severity: 'error',
+              summary: 'Error',
+              detail: error.message || GENERIC_ERROR_MESSAGE,
+            });
+            this.submitting = false;
+          },
+          complete: () => {
+            this.submitting = false;
+          },
+        });
+      },
+      error: (err) => {
+        console.error('Error on create new user', err);
+        const { error } = err;
+        if (!error) return;
+        this.messageService.add({
+          severity: 'error',
+          summary: 'Error',
+          detail: error.message || GENERIC_ERROR_MESSAGE,
+        });
+      },
     });
   }
 }

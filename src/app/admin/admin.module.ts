@@ -2,16 +2,20 @@ import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 import { PrimengModule } from '../primeng/primeng.module';
-import { DashboardRoutingModule } from './dashboard-routing.module';
+import { SharedModule } from '../shared/shared.module';
+import { AdminRoutingModule } from './admin-routing.module';
 import { RepuestosComponent } from './pages/repuestos/repuestos.component';
+import { AdminComponent } from './admin.component';
+import { UsersComponent } from './pages/users/users.component';
 
 @NgModule({
-  declarations: [RepuestosComponent],
+  declarations: [RepuestosComponent, AdminComponent, UsersComponent],
   imports: [
     CommonModule,
     PrimengModule,
-    DashboardRoutingModule,
+    AdminRoutingModule,
     ReactiveFormsModule,
+    SharedModule,
   ],
 })
-export class DashboardModule {}
+export class AdminModule {}

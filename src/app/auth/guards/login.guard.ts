@@ -6,7 +6,7 @@ import {
   RouterStateSnapshot,
 } from '@angular/router';
 import { Observable } from 'rxjs';
-import { RepuestosComponent } from 'src/app/dashboard/pages/repuestos/repuestos.component';
+import { RepuestosComponent } from 'src/app/admin/pages/repuestos/repuestos.component';
 import { AuthService } from '../services/auth.service';
 
 @Injectable({

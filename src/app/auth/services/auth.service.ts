@@ -2,6 +2,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { catchError, map, Observable, of, tap } from 'rxjs';
 import { AuthResponse } from '../interfaces/auth-response.interface';
+import { LoginService } from '../interfaces/login-service.interface';
 import { RegisterUser } from '../interfaces/register-user.interface';
 import { User } from '../interfaces/user.interface';
 
@@ -12,7 +13,7 @@ export class AuthService {
   readonly AUTHORIZATION: string = 'Authorization';
   readonly LOGIN_ENDPOINT: string = 'api/login';
   readonly REFRESH_ENDPOINT: string = 'api/refresh-token';
-  readonly REGISTER_ENDPOINT: string = 'api/register';
+  readonly REGISTER_ENDPOINT: string = 'api/users';
   readonly ACCESS_TOKEN_KEY: string = 'accessToken';
   readonly REFRESH_TOKEN_KEY: string = 'refreshToken';
   readonly BEARER: string = 'Bearer ';
@@ -42,7 +43,7 @@ export class AuthService {
 
   constructor(private http: HttpClient) {}
 
-  login(username: string, password: string) {
+  login(username: string, password: string): Observable<LoginService> {
     const url = this.LOGIN_ENDPOINT;
     const body = { username, password };
 
@@ -54,7 +55,7 @@ export class AuthService {
           this.refreshToken = refreshToken;
         }
       ),
-      map(({ name }) => ({
+      map<AuthResponse, LoginService>(({ name }) => ({
         displayName: name,
         message: this.SUCCESS_LOGIN_MESSAGE,
       }))

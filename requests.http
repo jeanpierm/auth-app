@@ -1,8 +1,8 @@
 @hostname = http://localhost
 @port = 8080
- @host = {{hostname}}:{{port}}/api
- @contentType = application/json
-@token = Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJqZWFucGllcm0iLCJyb2xlcyI6WyJST0xFX0FETUlOIiwiUk9MRV9NQU5BR0VSIiwiUk9MRV9VU0VSIl0sImlzcyI6Imh0dHA6Ly9sb2NhbGhvc3Q6ODA4MC9hcGkvbG9naW4iLCJleHAiOjE2MzgxMjUzMzF9.9Kn6C4N5e0s5_nQTf3fQoLxlkmKg8EQEAkSBsAMLjiI
+@host = {{hostname}}:{{port}}/api
+@contentType = application/json
+@token = eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJqZWFucGllcm0iLCJyb2xlcyI6WyJST0xFX0FETUlOIiwiUk9MRV9NQU5BR0VSIiwiUk9MRV9VU0VSIl0sImlzcyI6Im1lbmRvemEiLCJleHAiOjE2Mzg0ODgwNDJ9.WXUEnE3UsQM32jGAn-DqA9HldJuq2Hm5xA4IjSytTmg
 
 ## LOGIN USER
 
@@ -11,23 +11,22 @@ Content-Type: {{contentType}}
 
 {
   "username": "jeanpierm",
-  "password": "12345"
+  "password": "314159"
 }
 
 ### GET USERS
 
 GET {{host}}/users
-Authorization: {{token}}
+Authorization: Bearer {{token}}
 
 ### CREATE USER
 
 POST {{host}}/users
 Content-Type: {{contentType}}
-Authorization: {{token}}
 
 {
-  "name": "Emily",
-  "email": "emily@gmail.com",
-  "username": "emily",
+  "name": "Billy",
+  "email": "billy@com",
+  "username": "billy",
   "password": "12345"
 }

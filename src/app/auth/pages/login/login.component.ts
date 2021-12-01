@@ -3,7 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { MessageService } from 'primeng/api';
 import { GENERIC_ERROR_MESSAGE } from 'src/app/app.messages';
-import { RepuestosComponent } from 'src/app/dashboard/pages/repuestos/repuestos.component';
+import { RepuestosComponent } from 'src/app/admin/pages/repuestos/repuestos.component';
 import { AuthService } from '../../services/auth.service';
 import { RegisterComponent } from '../register/register.component';
 
@@ -17,7 +17,7 @@ export class LoginComponent {
   submitting: boolean = false;
   loginForm: FormGroup = this.fb.group({
     username: ['jeanpierm', [Validators.required]],
-    password: ['12345', [Validators.required]],
+    password: ['314159', [Validators.required]],
   });
 
   get registerPath() {

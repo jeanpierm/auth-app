@@ -1,0 +1,47 @@
+<!-- <div class="flex justify-content-between">
+  <a routerLink="/auth/login">Back to login</a>
+
+  <button
+    pButton
+    pRipple
+    class="p-button-link"
+    label="logout"
+    (click)="logout()"
+  ></button>
+</div> -->
+<!-- <p-tabMenu [model]="items"></p-tabMenu> -->
+<div
+  class="flex align-items-center justify-content-between surface-overlay p-2"
+>
+  <div class="flex align-items-center">
+    <div class="px-6">Logo</div>
+    <button
+      pButton
+      pRipple
+      type="button"
+      icon="pi pi-bars"
+      class="p-button-rounded p-button-text"
+    ></button>
+  </div>
+  <div class="flex align-items-center">
+    <!-- <div class="px-2 font-bold">
+      <i class="pi pi-user"></i>
+      {{ displayName }}
+    </div> -->
+    <button
+      pButton
+      pRipple
+      class="p-button-secondary p-button-text"
+      icon="pi pi-user"
+      [label]="displayName"
+    ></button>
+    <button
+      pButton
+      pRipple
+      class="p-button-text"
+      icon="pi pi-sign-out"
+      label="Logout"
+      (click)="logout()"
+    ></button>
+  </div>
+</div>
