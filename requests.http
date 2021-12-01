@@ -2,7 +2,7 @@
 @port = 8080
 @host = {{hostname}}:{{port}}/api
 @contentType = application/json
-@token = eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJqZWFucGllcm0iLCJyb2xlcyI6WyJST0xFX0FETUlOIiwiUk9MRV9NQU5BR0VSIiwiUk9MRV9VU0VSIl0sImlzcyI6Im1lbmRvemEiLCJleHAiOjE2Mzg0ODgwNDJ9.WXUEnE3UsQM32jGAn-DqA9HldJuq2Hm5xA4IjSytTmg
+@token = eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJqZWFucGllcm0iLCJyb2xlcyI6WyJST0xFX0FETUlOIiwiUk9MRV9NQU5BR0VSIiwiUk9MRV9VU0VSIl0sImlzcyI6Im1lbmRvemEiLCJleHAiOjE2MzgzMzcwODl9.uOfM7QdYxJZdyHf-l8YgyIJu5o5Ibfa-Z8dzaaI4Avc
 
 ## LOGIN USER
 

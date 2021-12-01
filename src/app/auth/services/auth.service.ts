@@ -4,7 +4,7 @@ import { catchError, map, Observable, of, tap } from 'rxjs';
 import { AuthResponse } from '../interfaces/auth-response.interface';
 import { LoginService } from '../interfaces/login-service.interface';
 import { RegisterUser } from '../interfaces/register-user.interface';
-import { User } from '../interfaces/user.interface';
+import { AuthUser } from '../interfaces/auth-user.interface';
 
 @Injectable({
   providedIn: 'root',
@@ -19,7 +19,7 @@ export class AuthService {
   readonly BEARER: string = 'Bearer ';
   readonly SUCCESS_LOGIN_MESSAGE: string = 'Successfull login.';
 
-  private user!: User;
+  private user!: AuthUser;
 
   get authUser() {
     return { ...this.user };
