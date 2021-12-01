@@ -6,7 +6,7 @@ import { AuthService } from 'src/app/auth/services/auth.service';
   templateUrl: './repuestos.component.html',
 })
 export class RepuestosComponent {
-  static readonly PATH = '/dashboard/repuestos';
+  static readonly PATH = '/admin/repuestos';
 
   get user() {
     return this.authService.authUser;

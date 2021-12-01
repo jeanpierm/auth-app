@@ -2,7 +2,7 @@
 @port = 8080
 @host = {{hostname}}:{{port}}/api
 @contentType = application/json
-@token = eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJqZWFucGllcm0iLCJyb2xlcyI6WyJST0xFX0FETUlOIiwiUk9MRV9NQU5BR0VSIiwiUk9MRV9VU0VSIl0sImlzcyI6Im1lbmRvemEiLCJleHAiOjE2MzgzMzcwODl9.uOfM7QdYxJZdyHf-l8YgyIJu5o5Ibfa-Z8dzaaI4Avc
+@token = eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJqZWFucGllcm0iLCJyb2xlcyI6WyJST0xFX0FETUlOIiwiUk9MRV9NQU5BR0VSIiwiUk9MRV9VU0VSIl0sImlzcyI6Im1lbmRvemEiLCJleHAiOjE2Mzg0MDY1MTV9.0-QmlYPm0oIwTtxuEc7B_FYzoptEeI5mQErAV3W8gAc
 
 ## LOGIN USER
 
@@ -30,3 +30,10 @@ Content-Type: {{contentType}}
   "username": "billy",
   "password": "12345"
 }
+
+### DELETE USER
+@userId = 19
+
+DELETE {{host}}/users/{{userId}}
+Authorization: Bearer {{token}}
+

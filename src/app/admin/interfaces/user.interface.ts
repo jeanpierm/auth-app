@@ -1,11 +1,12 @@
 export interface User {
-  createdAt: string;
+  createdAt?: string;
   modifiedAt?: string;
-  userId: number;
+  userId?: number;
   name: string;
   email: string;
   username: string;
-  roles: Role[];
+  password?: string;
+  roles?: Role[];
 }
 
 export interface Role {

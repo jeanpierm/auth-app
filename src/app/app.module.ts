@@ -7,6 +7,8 @@ import { AuthModule } from './auth/auth.module';
 import { HttpClientModule } from '@angular/common/http';
 import { MessageService } from 'primeng/api';
 import { PrimengModule } from './primeng/primeng.module';
+import { httpInterceptorProviders } from './interceptors';
+
 @NgModule({
   declarations: [AppComponent],
   imports: [
@@ -17,7 +19,7 @@ import { PrimengModule } from './primeng/primeng.module';
     PrimengModule,
     AuthModule,
   ],
-  providers: [MessageService],
+  providers: [MessageService, httpInterceptorProviders],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

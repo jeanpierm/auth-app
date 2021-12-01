@@ -3,7 +3,6 @@ import { Injectable } from '@angular/core';
 import { catchError, map, Observable, of, tap } from 'rxjs';
 import { AuthResponse } from '../interfaces/auth-response.interface';
 import { LoginService } from '../interfaces/login-service.interface';
-import { RegisterUser } from '../interfaces/register-user.interface';
 import { AuthUser } from '../interfaces/auth-user.interface';
 
 @Injectable({
@@ -13,7 +12,7 @@ export class AuthService {
   readonly AUTHORIZATION: string = 'Authorization';
   readonly LOGIN_ENDPOINT: string = 'api/login';
   readonly REFRESH_ENDPOINT: string = 'api/refresh-token';
-  readonly REGISTER_ENDPOINT: string = 'api/users';
+  // readonly REGISTER_ENDPOINT: string = 'api/users';
   readonly ACCESS_TOKEN_KEY: string = 'accessToken';
   readonly REFRESH_TOKEN_KEY: string = 'refreshToken';
   readonly BEARER: string = 'Bearer ';
@@ -62,12 +61,6 @@ export class AuthService {
     );
   }
 
-  register(user: RegisterUser) {
-    return this.createUser(user).subscribe(({ username, password }) => {
-      return this.login(username, password);
-    });
-  }
-
   validateAndRefreshToken(): Observable<boolean> {
     if (!this.refreshToken) {
       console.log('no se encontró token');
@@ -99,12 +92,5 @@ export class AuthService {
 
   logout() {
     localStorage.clear();
-  }
-
-  createUser(user: RegisterUser) {
-    const url = this.REGISTER_ENDPOINT;
-    const body = user;
-
-    return this.http.post<RegisterUser>(url, body);
   }
 }

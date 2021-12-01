@@ -6,6 +6,7 @@ import { GENERIC_ERROR_MESSAGE } from 'src/app/app.messages';
 import { RepuestosComponent } from 'src/app/admin/pages/repuestos/repuestos.component';
 import { AuthService } from '../../services/auth.service';
 import { RegisterComponent } from '../register/register.component';
+import { AdminComponent } from 'src/app/admin/admin.component';
 
 @Component({
   selector: 'app-login',
@@ -52,7 +53,7 @@ export class LoginComponent {
     this.submitting = true;
     this.authService.login(username, password).subscribe({
       next: ({ displayName, message }) => {
-        this.router.navigateByUrl(RepuestosComponent.PATH);
+        this.router.navigateByUrl(AdminComponent.PATH);
         this.messageService.add({
           severity: 'success',
           summary: `Welcome ${displayName}`,

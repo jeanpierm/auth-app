@@ -5,9 +5,10 @@ import { MessageService } from 'primeng/api';
 import { GENERIC_ERROR_MESSAGE } from 'src/app/app.messages';
 import { RepuestosComponent } from 'src/app/admin/pages/repuestos/repuestos.component';
 import { ValidatorService } from 'src/app/shared/services/validator.service';
-import { RegisterUser } from '../../interfaces/register-user.interface';
 import { AuthService } from '../../services/auth.service';
 import { LoginComponent } from '../login/login.component';
+import { User } from 'src/app/admin/interfaces/user.interface';
+import { UsersService } from 'src/app/admin/services/users.service';
 
 @Component({
   selector: 'app-sign-in',
@@ -62,7 +63,8 @@ export class RegisterComponent {
     private router: Router,
     private validatorService: ValidatorService,
     private messageService: MessageService,
-    private authService: AuthService
+    private authService: AuthService,
+    private usersService: UsersService
   ) {}
 
   isInvalid(controlName: string) {
@@ -75,10 +77,10 @@ export class RegisterComponent {
       return;
     }
     const { name, email, username, password } = this.registerForm.value;
-    const newUser: RegisterUser = { name, email, username, password };
-    this.authService.createUser(newUser).subscribe({
+    const newUser: User = { name, email, username, password };
+    this.usersService.createUser(newUser).subscribe({
       next: (_) => {
-        this.authService.login(newUser.username, newUser.password).subscribe({
+        this.authService.login(newUser.username, newUser.password!).subscribe({
           next: ({ displayName, message }) => {
             this.router.navigateByUrl(RepuestosComponent.PATH);
             this.messageService.add({
