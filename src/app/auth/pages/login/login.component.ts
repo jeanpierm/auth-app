@@ -49,8 +49,8 @@ export class LoginComponent {
     if (!this.loginForm.valid) {
       return;
     }
-    const { username, password } = this.loginForm.value;
     this.submitting = true;
+    const { username, password } = this.loginForm.value;
     this.authService.login(username, password).subscribe({
       next: ({ displayName, message }) => {
         this.router.navigateByUrl(AdminComponent.PATH);

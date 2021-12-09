@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MessageService } from 'primeng/api';
-import { User } from 'src/app/admin/interfaces/user.interface';
+import { Rol, User } from 'src/app/admin/interfaces/user.interface';
 import { UsersService } from 'src/app/admin/services/users.service';
 import { GENERIC_ERROR_MESSAGE } from 'src/app/app.messages';
 
@@ -32,7 +32,12 @@ export class UsersTableComponent implements OnInit {
     this.usersService.displayDialog = true;
   }
 
+  loadUsers() {
+    this.usersService.loadUsers();
+  }
+
   removeUser(userId: number): void {
+    this.submitting = true;
     this.usersService.removeUser(userId).subscribe({
       next: () => {
         this.usersService.loadUsers();
@@ -55,5 +60,24 @@ export class UsersTableComponent implements OnInit {
         this.submitting = false;
       },
     });
+  }
+
+  showRoles(roles: Rol[]) {
+    return roles
+      .map((rol) => {
+        switch (rol.name) {
+          case 'ROLE_USER':
+            return 'User';
+          case 'ROLE_MANAGER':
+            return 'Manager';
+          case 'ROLE_ADMIN':
+            return 'Admin';
+          case 'ROLE_SUPER_ADMIN':
+            return 'Sudo';
+          default:
+            return 'Undefined';
+        }
+      })
+      .join(', ');
   }
 }

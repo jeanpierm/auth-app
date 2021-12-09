@@ -6,10 +6,10 @@ export interface User {
   email: string;
   username: string;
   password?: string;
-  roles?: Role[];
+  roles?: Rol[];
 }
 
-export interface Role {
+export interface Rol {
   createdAt: string;
   modifiedAt?: string;
   roleId: number;

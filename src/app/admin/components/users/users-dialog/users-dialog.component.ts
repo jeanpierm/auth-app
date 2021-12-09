@@ -49,7 +49,7 @@ export class UsersDialogComponent {
     if (this.userForm.invalid) {
       return;
     }
-    console.log('form valid');
+    this.submitting = true;
     const { name, email, username, password } = this.userForm.value;
     const user: User = { name, email, username, password };
     this.usersService.createUser(user).subscribe({
@@ -75,5 +75,9 @@ export class UsersDialogComponent {
         this.submitting = false;
       },
     });
+  }
+
+  closeDialog() {
+    this.usersService.displayDialog = false;
   }
 }

@@ -76,6 +76,7 @@ export class RegisterComponent {
     if (!this.registerForm.valid) {
       return;
     }
+    this.submitting = true;
     const { name, email, username, password } = this.registerForm.value;
     const newUser: User = { name, email, username, password };
     this.usersService.createUser(newUser).subscribe({

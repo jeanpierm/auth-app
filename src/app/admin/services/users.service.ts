@@ -9,6 +9,7 @@ import { User } from '../interfaces/user.interface';
 export class UsersService {
   static readonly baseUrl: string = 'api/users';
 
+  currentUser!: User;
   users: User[] = [];
   loadingTable: boolean = true;
   displayDialog: boolean = false;

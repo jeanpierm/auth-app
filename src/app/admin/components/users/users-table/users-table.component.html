@@ -29,16 +29,19 @@
         <app-users-dialog></app-users-dialog>
       </div>
 
-      <span class="p-input-icon-left">
-        <i class="pi pi-search"></i>
-        <input
-          #searchText
-          pInputText
-          type="text"
-          (input)="dt.filterGlobal(searchText.value, 'contains')"
-          placeholder="Global Search"
-        />
-      </span>
+      <div>
+        <span class="p-input-icon-left mr-3">
+          <i class="pi pi-search"></i>
+          <input
+            #searchText
+            pInputText
+            type="text"
+            (input)="dt.filterGlobal(searchText.value, 'contains')"
+            placeholder="Global Search"
+          />
+        </span>
+        <p-button icon="pi pi-refresh" (onClick)="loadUsers()"></p-button>
+      </div>
     </div>
   </ng-template>
 
@@ -61,6 +64,7 @@
         Username
         <p-sortIcon field="username"></p-sortIcon>
       </th>
+      <th>Roles</th>
       <th pSortableColumn="createdAt">
         Created at
         <p-sortIcon field="createdAt"></p-sortIcon>
@@ -80,6 +84,7 @@
       <td>{{ user.name }}</td>
       <td>{{ user.email }}</td>
       <td>{{ user.username }}</td>
+      <td>{{ showRoles(user.roles) }}</td>
       <td>{{ user.createdAt | date }}</td>
       <td>{{ user.modifiedAt | date }}</td>
       <td class="flex justify-content-around w-9rem">
@@ -89,8 +94,8 @@
           type="button"
           class="p-button-info p-button-outlined p-button-rounded"
           icon="pi pi-pencil"
-          [disabled]="submitting"
           (click)="showDialog()"
+          [disabled]="submitting"
         ></button>
         <button
           pButton
